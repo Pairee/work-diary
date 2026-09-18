@@ -51,10 +51,15 @@ else:
 
 writer = tmp / "fake_writer.py"
 writer.write_text(
-    "import sys\n"
+    "import sys, os\n"
     "data = sys.stdin.buffer.read().decode('utf-8')\n"
     "assert '보고서.md' in data, '한글 파일 이름이 자료에 그대로 들어가야 한다'\n"
     "assert 'ghp_' not in data and '[토큰 가림]' in data, '코드에 적힌 토큰은 가려져야 한다'\n"
+    "assert 'BEGIN RSA PRIVATE KEY' not in data and 'MIIfakekeybody' not in data, '새 파일의 개인키 본문은 보내면 안 된다'\n"
+    "assert 'Co-Authored-By' not in data and 'colleague@example.com' not in data, '커밋 꼬리표의 동료 메일은 빼야 한다'\n"
+    "assert 'someone@example.com' not in data, '메일 주소는 가려야 한다'\n"
+    "assert not os.listdir(os.getcwd()) or all(n.endswith('.md') for n in os.listdir(os.getcwd())), 'AI 는 빈 임시 폴더에서 돌아야 한다'\n"
+    "assert not os.path.exists(os.path.join(os.getcwd(), '보고서.md')), 'AI 작업 폴더가 프로젝트여서는 안 된다'\n"
     "sys.stdout.buffer.write('**한 줄 요약**: 시험 기록입니다.\\n\\n**무엇을 했나**\\n- 시험\\n'.encode('utf-8'))\n",
     encoding="utf-8")
 env["WORKLOG_LLM_CMD"] = '"%s" "%s"' % (sys.executable, writer)
@@ -84,8 +89,9 @@ run(["git", "-C", repo, "config", "user.name", "시험자"])
 run(["git", "-C", repo, "config", "user.email", "tester@example.com"])
 (repo / "보고서.md").write_text("# 보고서\n", encoding="utf-8")
 run(["git", "-C", repo, "add", "-A"])
-run(["git", "-C", repo, "commit", "-q", "-m", "feat: 보고서 초안 추가", "-m", "팀장 요청"])
+run(["git", "-C", repo, "commit", "-q", "-m", "feat: 보고서 초안 추가", "-m", "팀장 요청 someone@example.com\nCo-Authored-By: 동료 <colleague@example.com>"])
 (repo / "보고서.md").write_text("# 보고서\n\n둘째 줄\ntoken = \"%s\"\n" % FAKE_TOKEN, encoding="utf-8")
+(repo / "server.pem").write_text("-----BEGIN RSA PRIVATE KEY-----\nMIIfakekeybody\n" * 3, encoding="utf-8")  # 새 파일, END 없음
 
 # 1. 설치
 installer()

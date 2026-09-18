@@ -45,9 +45,13 @@ if ! has python3 || ! has git; then
 fi
 
 # 내려받은 폴더에서 돌리면 그 안의 스킬을, 한 줄 설치(curl | bash)면 깃허브에서 받아 쓴다.
-HERE="$(cd "$(dirname "${BASH_SOURCE[0]:-.}")" 2>/dev/null && pwd || pwd)"
-SRC="$HERE/skills/work-diary"
-if [ ! -f "$SRC/SKILL.md" ]; then
+SRC=""
+if [ -n "${BASH_SOURCE[0]:-}" ] && [ -f "${BASH_SOURCE[0]}" ]; then
+  HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  SRC="$HERE/skills/work-diary"
+fi
+# curl | bash 로 돌리면 파일이 없으므로(현재 폴더의 것을 집어 오지 않도록) 반드시 깃허브에서 받는다.
+if [ -z "$SRC" ] || [ ! -f "$SRC/SKILL.md" ]; then
   TMP="$(mktemp -d)"
   trap 'rm -rf "$TMP"' EXIT
   echo "스킬을 내려받는 중: github.com/$REPO"
