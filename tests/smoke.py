@@ -111,7 +111,7 @@ assert "시험 기록입니다" in logs[0].read_text(encoding="utf-8"), "쓴 본
 out = run(wl + ["schedule", "install", "--llm", "claude"], check=False)
 if "설정됨" in out:
     status = run(wl + ["schedule", "status"])
-    assert "11:30" in status and "15:30" in status and "18:30" in status, "세 시각이 걸려 있어야 한다"
+    assert "09:00" in status and "23:00" in status, "두 시각이 걸려 있어야 한다"
     run(wl + ["stop", "프로젝트"])
     status = run(wl + ["schedule", "status"])
     assert "걸려 있지 않음" in status, "끄면 예약 실행이 풀려야 한다"

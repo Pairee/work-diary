@@ -10,7 +10,7 @@
   worklog.py run --all        등록된 전부 한 회차 기록 (스케줄러가 부르는 것)
   worklog.py run --name <이름> 한 프로젝트만 기록
   worklog.py stop <이름>       그 프로젝트 기록 종료
-  worklog.py schedule install 하루 3번 자동 실행 걸기
+  worklog.py schedule install 하루 2번 자동 실행 걸기
   worklog.py status           지금 상태 보기
   worklog.py backfill --name <이름> --from 2026-09-01   지난 날을 하루씩 채우고 요약
   worklog.py summarize --name <이름>                    이번 달 일지 맨 위 요약을 다시 씀
@@ -42,7 +42,7 @@ STATE_DIR = BASE / "state"
 RUN_LOG = BASE / "run.log"
 SKILL_DIR = Path(__file__).resolve().parent.parent
 DEFAULT_LOG_ROOT = HOME / "worklog"
-DEFAULT_TIMES = ["11:30", "15:30", "18:30"]
+DEFAULT_TIMES = ["09:00", "23:00"]
 # 시험할 때 실제 예약 작업을 건드리지 않도록 이름을 바꿔 쓸 수 있게 둔다.
 AGENT_LABEL = os.environ.get("WORK_DIARY_LABEL", "com.worklog.work-diary")
 TASK_NAME = os.environ.get("WORK_DIARY_TASK", "WorkDiary")
@@ -583,7 +583,7 @@ def ensure_header(path, project, dt):
     header = [
         "# %s 업무일지, %s년 %s월" % (project["name"], dt.strftime("%Y"), dt.strftime("%m").lstrip("0")),
         "",
-        "이 파일은 사람이 쓰지 않고 자동으로 쌓입니다. 하루 세 번, 프로젝트 폴더에서 **실제로 바뀐 것**만",
+        "이 파일은 사람이 쓰지 않고 자동으로 쌓입니다. 하루 두 번, 프로젝트 폴더에서 **실제로 바뀐 것**만",
         "골라서 개발을 모르는 사람이 읽을 수 있는 말로 옮겨 적습니다. 바뀐 게 없는 시간대는 건너뜁니다.",
         "",
         "![업무일지가 만들어지는 흐름](assets/work-diary-flow.png)",
@@ -973,7 +973,7 @@ def _psq(value):
 
 def _win_python():
     exe = Path(sys.executable)
-    quiet = exe.with_name("pythonw.exe")  # 하루 세 번 검은 창이 뜨지 않게
+    quiet = exe.with_name("pythonw.exe")  # 하루 두 번 검은 창이 뜨지 않게
     return str(quiet if quiet.exists() else exe)
 
 
@@ -1277,7 +1277,7 @@ def main():
 
     c = sub.add_parser("schedule", help="자동 실행")
     c.add_argument("action", choices=["install", "uninstall", "status"])
-    c.add_argument("--times", help="예: 11:30,15:30,18:30")
+    c.add_argument("--times", help="예: 09:00,23:00")
     c.add_argument("--llm", choices=LLM_ORDER, help="일지를 쓸 AI (켤 때 쓰고 있는 도구)")
     c.set_defaults(func=cmd_schedule)
 
