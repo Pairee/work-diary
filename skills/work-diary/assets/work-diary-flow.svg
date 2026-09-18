@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="1350" viewBox="0 0 920 1350" font-family="'Apple SD Gothic Neo','Pretendard','Noto Sans KR',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4A5260"/>
+    </marker>
+    <marker id="arrowMuted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#98A1AE"/>
+    </marker>
+    <marker id="arrowLoop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4E7C74"/>
+    </marker>
+  </defs>
+
+  <rect width="920" height="1350" fill="#FFFFFF"/>
+
+  <!-- 제목 -->
+  <text x="460" y="48" text-anchor="middle" font-size="27" font-weight="700" fill="#1B2027">업무일지 자동 기록 흐름</text>
+  <text x="460" y="79" text-anchor="middle" font-size="15" fill="#5B6470">한 번 켜면 프로젝트가 끝날 때까지, 사람이 쓰지 않고 쌓이는 기록</text>
+
+  <!-- ① 켜기 -->
+  <rect x="300" y="110" width="420" height="96" rx="12" fill="#EEF3F2" stroke="#4E7C74" stroke-width="1.6"/>
+  <circle cx="332" cy="140" r="15" fill="#4E7C74"/>
+  <text x="332" y="146" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">1</text>
+  <text x="360" y="146" font-size="19" font-weight="700" fill="#1B2027">켠다 (사람이 하는 일, 한 번)</text>
+  <text x="360" y="176" font-size="15" fill="#3D4552">“업무일지 켜줘” · 기록할 폴더와 쌓을 곳을 등록한다</text>
+
+  <line x1="510" y1="206" x2="510" y2="248" stroke="#4A5260" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- ② 스케줄 -->
+  <rect x="300" y="252" width="420" height="96" rx="12" fill="#F6F7F9" stroke="#C9CED6" stroke-width="1.4"/>
+  <circle cx="332" cy="282" r="15" fill="#4A5260"/>
+  <text x="332" y="288" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">2</text>
+  <text x="360" y="288" font-size="19" font-weight="700" fill="#1B2027">하루 세 번 스스로 깨어난다</text>
+  <text x="360" y="318" font-size="15" fill="#3D4552">11:30 · 15:30 · 18:30 · 잠들어 있었으면 깨어날 때 한 번</text>
+
+  <line x1="510" y1="348" x2="510" y2="390" stroke="#4A5260" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- ③ 수집 -->
+  <rect x="300" y="394" width="420" height="112" rx="12" fill="#F6F7F9" stroke="#C9CED6" stroke-width="1.4"/>
+  <circle cx="332" cy="424" r="15" fill="#4A5260"/>
+  <text x="332" y="430" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">3</text>
+  <text x="360" y="430" font-size="19" font-weight="700" fill="#1B2027">바뀐 것을 모은다</text>
+  <text x="360" y="460" font-size="15" fill="#3D4552">지난 표시 이후의 커밋 메시지 · 바뀐 파일 목록</text>
+  <text x="360" y="484" font-size="15" fill="#3D4552">· 아직 확정(커밋)하지 않고 저장만 해 둔 변경</text>
+
+  <line x1="510" y1="506" x2="510" y2="548" stroke="#4A5260" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- ④ 거르기 -->
+  <rect x="300" y="552" width="420" height="92" rx="12" fill="#FBF3E8" stroke="#B5793A" stroke-width="1.6"/>
+  <circle cx="332" cy="582" r="15" fill="#B5793A"/>
+  <text x="332" y="588" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">4</text>
+  <text x="360" y="588" font-size="19" font-weight="700" fill="#1B2027">쓸 값어치가 있나?</text>
+  <text x="360" y="617" font-size="15" fill="#3D4552">오탈자 · 자동 생성 파일 · 서식 정리뿐이면 아니오</text>
+
+  <!-- 왼쪽 분기: 기록하지 않음 -->
+  <line x1="300" y1="598" x2="256" y2="598" stroke="#98A1AE" stroke-width="1.6" marker-end="url(#arrowMuted)"/>
+  <text x="278" y="586" text-anchor="middle" font-size="13" fill="#6B7482">아니오</text>
+  <rect x="44" y="546" width="206" height="104" rx="12" fill="#FAFAFB" stroke="#C9CED6" stroke-width="1.3" stroke-dasharray="5 4"/>
+  <text x="147" y="580" text-anchor="middle" font-size="16" font-weight="700" fill="#4A5260">기록하지 않는다</text>
+  <text x="147" y="606" text-anchor="middle" font-size="13" fill="#6B7482">빈 기록이 하루 세 번</text>
+  <text x="147" y="626" text-anchor="middle" font-size="13" fill="#6B7482">쌓이면 아무도 안 읽는다</text>
+  <path d="M147,546 V300 H296" fill="none" stroke="#98A1AE" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrowMuted)"/>
+  <text x="135" y="416" text-anchor="end" font-size="13" fill="#6B7482">다음 회차에</text>
+  <text x="135" y="436" text-anchor="end" font-size="13" fill="#6B7482">함께 묶어서</text>
+
+  <line x1="510" y1="644" x2="510" y2="686" stroke="#4A5260" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="524" y="672" font-size="13" fill="#6B7482">예</text>
+
+  <!-- ⑤ 옮기기 -->
+  <rect x="300" y="690" width="420" height="116" rx="12" fill="#EEF3F2" stroke="#4E7C74" stroke-width="1.6"/>
+  <circle cx="332" cy="720" r="15" fill="#4E7C74"/>
+  <text x="332" y="726" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">5</text>
+  <text x="360" y="726" font-size="19" font-weight="700" fill="#1B2027">비개발자의 말로 옮긴다</text>
+  <text x="360" y="756" font-size="15" fill="#3D4552">무엇을 / 어떻게 / 왜 + 근거 한 줄</text>
+  <text x="360" y="782" font-size="15" fill="#3D4552">확인되지 않은 이유는 지어내지 않는다</text>
+
+  <line x1="510" y1="806" x2="510" y2="848" stroke="#4A5260" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- ⑥ 쌓기 -->
+  <rect x="300" y="852" width="420" height="104" rx="12" fill="#F6F7F9" stroke="#C9CED6" stroke-width="1.4"/>
+  <circle cx="332" cy="882" r="15" fill="#4A5260"/>
+  <text x="332" y="888" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">6</text>
+  <text x="360" y="888" font-size="19" font-weight="700" fill="#1B2027">월별 파일에 이어 붙인다</text>
+  <text x="360" y="918" font-size="15" fill="#3D4552">~/worklog/&lt;프로젝트&gt;/2026-09.md</text>
+  <text x="360" y="940" font-size="13" fill="#6B7482">고쳐 쓰지 않고 뒤에만 붙인다. 지난 기록은 그대로 남는다</text>
+
+  <line x1="510" y1="956" x2="510" y2="998" stroke="#4A5260" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- ⑦ 커서 -->
+  <rect x="300" y="1002" width="420" height="88" rx="12" fill="#F6F7F9" stroke="#C9CED6" stroke-width="1.4"/>
+  <circle cx="332" cy="1032" r="15" fill="#4A5260"/>
+  <text x="332" y="1038" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">7</text>
+  <text x="360" y="1038" font-size="19" font-weight="700" fill="#1B2027">“여기까지 기록함”을 표시한다</text>
+  <text x="360" y="1066" font-size="15" fill="#3D4552">같은 내용이 두 번 쌓이지 않게 하는 장치</text>
+
+  <!-- 되돌아가는 고리 -->
+  <path d="M720,1046 H800 V450 H724" fill="none" stroke="#4E7C74" stroke-width="1.7" marker-end="url(#arrowLoop)"/>
+  <text x="812" y="732" font-size="13" fill="#4E7C74">다음 회차는</text>
+  <text x="812" y="752" font-size="13" fill="#4E7C74">이 표시 뒤부터</text>
+
+  <line x1="510" y1="1090" x2="510" y2="1132" stroke="#4A5260" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- ⑧ 끄기 -->
+  <rect x="300" y="1136" width="420" height="96" rx="12" fill="#EEF3F2" stroke="#4E7C74" stroke-width="1.6"/>
+  <circle cx="332" cy="1166" r="15" fill="#4E7C74"/>
+  <text x="332" y="1172" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">8</text>
+  <text x="360" y="1172" font-size="19" font-weight="700" fill="#1B2027">끈다 (사람이 하는 일, 한 번)</text>
+  <text x="360" y="1202" font-size="15" fill="#3D4552">“기록 멈춰” · 자동 실행만 풀리고 일지는 그대로 남는다</text>
+
+  <!-- 캡션 -->
+  <line x1="60" y1="1272" x2="860" y2="1272" stroke="#E3E6EA" stroke-width="1"/>
+  <text x="460" y="1302" text-anchor="middle" font-size="14" fill="#5B6470">그림 1. 업무일지가 만들어지는 흐름. 사람이 손대는 곳은 ①과 ⑧ 두 번뿐이고,</text>
+  <text x="460" y="1324" text-anchor="middle" font-size="14" fill="#5B6470">그사이 ②~⑦은 하루 세 번 스스로 돈다.</text>
+</svg>

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>업무일지 스킬 설치</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #EFEEEA; --surface: #F7F6F3; --ink: #161616; --soft: #5B5A56; --line: #C9C6BF;
+    --code: #E4E2DC;
+    --sans: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+  }
+  html, body { margin: 0; }
+  body {
+    background: var(--paper); color: var(--ink); font-family: var(--sans);
+    font-size: 17px; line-height: 1.75; word-break: keep-all; overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding-inline: 20px; padding-block: 64px 96px; }
+  .meta { font-size: 15px; font-weight: 500; line-height: 1.5; margin: 0 0 48px; }
+  .meta span { display: block; }
+  .meta .en { letter-spacing: 2px; }
+  h1 { font-size: clamp(38px, 7vw, 60px); font-weight: 800; line-height: 1.12; letter-spacing: -1.5px; margin: 0 0 20px; }
+  .lede { font-size: 19px; color: var(--soft); margin: 0 0 56px; }
+  h2 { font-size: 26px; font-weight: 800; letter-spacing: -.5px; margin: 56px 0 16px; padding-top: 20px; border-top: 2px solid var(--ink); }
+  h3 { font-size: 18px; font-weight: 700; margin: 28px 0 8px; }
+  p { margin: 0 0 14px; }
+  ol, ul { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 10px; }
+  code { font-family: var(--mono); font-size: .9em; background: var(--code); padding: 2px 6px; border-radius: 3px; }
+  pre {
+    font-family: var(--mono); font-size: 15px; line-height: 1.6; background: var(--surface);
+    border: 1px solid var(--line); padding: 14px 16px; margin: 8px 0 18px; overflow-x: auto; white-space: pre;
+  }
+  .say { font-size: 22px; font-weight: 700; margin: 8px 0 18px; padding: 18px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+  .tablewrap { overflow-x: auto; margin: 8px 0 18px; }
+  table { border-collapse: collapse; width: 100%; min-width: 440px; font-size: 16px; }
+  th, td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 14px; font-weight: 500; color: var(--soft); border-bottom: 1px solid var(--ink); }
+  td code { font-size: 14px; }
+  .note { color: var(--soft); font-size: 15.5px; }
+  a { color: inherit; }
+  .foot { margin-top: 64px; font-size: 14px; font-weight: 500; letter-spacing: 2px; }
+  @page { size: A4; margin: 16mm 16mm 18mm; }
+  @media print {
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { font-size: 14px; }
+    .wrap { max-width: none; padding: 0; }
+    h2, h3 { break-after: avoid; }
+    pre, table, .say { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="meta"><span class="en">WORK DIARY</span><span class="en">INSTALL GUIDE</span><span>업무일지 스킬</span></p>
+  <h1>설치는 한 번,<br>켜는 건 한 마디</h1>
+  <p class="lede">
+    프로젝트에서 한 일을 개발을 모르는 사람도 읽을 수 있는 업무일지로 하루 세 번 저절로 쌓아 주는 스킬입니다.
+    클로드 코드, 코덱스, 안티그래비티에서 똑같이 쓰고, 맥과 윈도우를 모두 지원합니다.
+  </p>
+
+  <h2>준비물</h2>
+  <ul>
+    <li><strong>맥 또는 윈도우.</strong> 두 곳 모두 하루 세 번 자동 기록이 됩니다.</li>
+    <li><strong>AI 앱 하나 이상.</strong> 클로드 코드, 코덱스, 안티그래비티 중 하나가 설치되고 로그인돼 있어야 합니다.</li>
+    <li><strong>파이썬과 git.</strong> 맥은 대부분 이미 있습니다(없으면 설치 파일이 알려 줍니다).
+      윈도우는 <a href="https://www.python.org/downloads/">Python</a>(설치 첫 화면에서 "Add python.exe to PATH" 체크)과
+      <a href="https://git-scm.com/download/win">Git</a>을 먼저 설치합니다.</li>
+  </ul>
+
+  <h2>설치 · 방법 1. 명령어 한 줄</h2>
+  <h3>맥</h3>
+  <p>터미널(응용 프로그램 → 유틸리티 → 터미널)을 열고 붙여 넣은 뒤 엔터.</p>
+  <pre>curl -fsSL https://raw.githubusercontent.com/Pairee/work-diary/main/install.sh | bash</pre>
+  <h3>윈도우</h3>
+  <p>시작 메뉴에서 PowerShell 을 열고 붙여 넣은 뒤 엔터.</p>
+  <pre>irm https://raw.githubusercontent.com/Pairee/work-diary/main/get.ps1 | iex</pre>
+
+  <h2>설치 · 방법 2. 내려받아 더블클릭</h2>
+  <ol>
+    <li>깃허브 저장소의 <strong>Releases</strong>에서 내 컴퓨터에 맞는 zip을 받습니다.
+      맥은 <code>work-diary-mac.zip</code>, 윈도우는 <code>work-diary-windows.zip</code>.</li>
+    <li>압축을 풀고 맥은 <strong>설치하기</strong>, 윈도우는 <strong>install.bat</strong>을 더블클릭합니다.</li>
+    <li>"설치가 끝났습니다"가 나오면 창을 닫습니다.</li>
+  </ol>
+  <p class="note">
+    처음 더블클릭할 때 막히면 이렇게 엽니다. 맥은 "확인되지 않은 개발자" 경고가 뜨면 마우스 오른쪽 버튼 → 열기.
+    윈도우는 "Windows의 PC 보호" 창이 뜨면 추가 정보 → 실행.
+  </p>
+
+  <p class="note">
+    어느 방법이든 설치 파일이 이 컴퓨터에 있는 AI 앱을 찾아, 앱마다 정해진 스킬 폴더에 알아서 넣습니다.
+    프로젝트 폴더에는 아무것도 넣지 않습니다.
+  </p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>앱</th><th>스킬이 들어가는 곳 (윈도우는 사용자 폴더 아래 같은 이름)</th></tr></thead>
+      <tbody>
+        <tr><td>클로드 코드</td><td><code>~/.claude/skills/work-diary</code></td></tr>
+        <tr><td>코덱스</td><td><code>~/.codex/skills/work-diary</code></td></tr>
+        <tr><td>안티그래비티</td><td><code>~/.gemini/config/skills/work-diary</code></td></tr>
+        <tr><td>제미나이 CLI</td><td><code>~/.agents/skills/work-diary</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>켜기</h2>
+  <p>기록할 프로젝트 폴더에서 AI 앱을 열고, 이렇게 말합니다. 명령어나 <code>/</code>는 필요 없습니다.</p>
+  <p class="say">“이 폴더 업무일지 켜줘”</p>
+  <p>
+    앱이 이 폴더를 기록 대상으로 등록하고, 하루 세 번(11:30, 15:30, 18:30) 자동 기록을 겁니다.
+    처음 켤 때 앱이 예약 실행(윈도우는 작업 스케줄러) 등록을 물으면 허용하세요. 켜자마자 첫 일지 한 편을 보여 줍니다.
+  </p>
+
+  <h3>그다음부터 쓰는 말</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>하고 싶은 것</th><th>앱에 이렇게 말한다</th></tr></thead>
+      <tbody>
+        <tr><td>지금 한 편 쓰기</td><td>오늘 한 일 정리해줘</td></tr>
+        <tr><td>지난 날 채우기</td><td>9월 1일부터 쭉 기록해줘</td></tr>
+        <tr><td>잘 되는지 보기</td><td>업무일지 기록 잘 되고 있어?</td></tr>
+        <tr><td>시각 바꾸기</td><td>기록 시간을 9시 반, 2시, 6시로 바꿔줘</td></tr>
+        <tr><td>끄기 (일지는 남음)</td><td>업무일지 기록 멈춰</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>짧은 명령</h3>
+  <p>말 대신 스킬 이름 뒤에 한 단어를 붙여 불러도 됩니다. 클로드 코드와 안티그래비티는 <code>/work-diary 켜기</code>,
+    코덱스는 <code>$work-diary 켜기</code>. 클로드 코드에 플러그인으로 설치했다면 <code>/work-diary:work-diary 켜기</code>.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>붙이는 말</th><th>하는 일</th></tr></thead>
+      <tbody>
+        <tr><td><code>켜기</code></td><td>지금 폴더 등록 + 자동 기록 시작 + 첫 한 편 보여 주기</td></tr>
+        <tr><td><code>지금</code></td><td>지금 한 편 쓰기</td></tr>
+        <tr><td><code>채우기 2026-09-01</code></td><td>그날부터 어제까지 하루씩 채우고 요약</td></tr>
+        <tr><td><code>요약</code></td><td>이번 달 요약 다시 쓰기</td></tr>
+        <tr><td><code>상태</code></td><td>등록된 프로젝트·자동 기록 시각·최근 기록 보기</td></tr>
+        <tr><td><code>시간 09:30,14:00,18:00</code></td><td>자동 기록 시각 바꾸기</td></tr>
+        <tr><td><code>끄기</code></td><td>이 프로젝트 기록 멈추기 (일지는 남음)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>일지는 어디에</h2>
+  <p>
+    <code>~/worklog/&lt;프로젝트이름&gt;/2026-09.md</code>처럼 한 달에 한 파일로 쌓입니다. 맨 위에 흐름 그림이 있고,
+    그 아래로 기록이 이어 붙습니다. 맥은 파인더에서 <strong>이동 → 폴더로 이동</strong>에 <code>~/worklog</code>를, 윈도우는 탐색기 주소창에 <code>%USERPROFILE%\worklog</code>를 넣으면 바로 열립니다.
+  </p>
+
+  <h2>업데이트와 지우기</h2>
+  <ul>
+    <li><strong>업데이트:</strong> 설치할 때와 같은 명령어를 한 번 더 실행합니다. 켜 둔 자동 기록도 새 판으로 바뀝니다.</li>
+    <li><strong>지우기 (맥):</strong> <code>curl -fsSL https://raw.githubusercontent.com/Pairee/work-diary/main/install.sh | bash -s -- --uninstall</code></li>
+    <li><strong>지우기 (윈도우):</strong> 내려받은 폴더에서 <code>install.bat -Uninstall</code></li>
+  </ul>
+  <p class="note">지워도 쌓인 일지(<code>~/worklog</code>)와 기록 상태(<code>~/.work-diary</code>)는 남습니다.</p>
+
+  <h2>챗봇만 쓴다면</h2>
+  <p>
+    a.biz, ChatGPT, Gemini 웹처럼 스킬을 설치할 수 없는 곳에서는 강의자료의 <strong>챗봇 프롬프트</strong>를
+    하루를 마칠 때 붙여 넣으면 같은 모양의 일지가 나옵니다. 스킬 폴더 안 <code>references/chatbot-prompt.md</code>에도 들어 있습니다.
+  </p>
+
+  <h2>잘 안 될 때</h2>
+  <ul>
+    <li><strong>일지가 안 쌓인다:</strong> 앱에 "업무일지 기록 잘 되고 있어?"라고 물어보세요. 바뀐 게 없는 시간대는 일부러 건너뜁니다.</li>
+    <li><strong>"왜" 칸이 자꾸 비어 있다:</strong> 확인 안 된 이유는 지어내지 않게 만들었습니다. 작업을 저장할 때(커밋 메시지) 이유를 한 줄 적으면 채워집니다.</li>
+    <li><strong>AI 사용 한도가 찼다:</strong> 다른 앱으로 바꿀 수 있습니다. 그 앱에서 "업무일지 켜줘"라고 다시 말하면 그 앱이 일지를 씁니다.</li>
+  </ul>
+
+  <p class="foot">WORK DIARY · FRONTIER LAB</p>
+</div>
+</body>
+</html>

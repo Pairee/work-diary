@@ -1,0 +1,16 @@
+{
+  "name": "work-diary",
+  "owner": {
+    "name": "Pairee"
+  },
+  "metadata": {
+    "description": "업무일지(work-diary): 개발 기록을 비개발자용 일지로 쌓는 스킬"
+  },
+  "plugins": [
+    {
+      "name": "work-diary",
+      "source": "./",
+      "description": "개발 기록을 비개발자도 읽을 수 있는 업무일지로 하루 세 번 자동으로 쌓는 스킬"
+    }
+  ]
+}
